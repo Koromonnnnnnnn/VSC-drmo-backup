@@ -30,7 +30,9 @@ while not doExit:
   
      
     #render section-----------------------------------
- 
+    
+    screen.fill((255,255,255))
+    pygame.draw.circle(screen, (200, 0, 200), (xPos, yPos), 12)
 
 
     pygame.display.flip() #update graphics each game loop
