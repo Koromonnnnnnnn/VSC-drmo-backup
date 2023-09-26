@@ -16,8 +16,8 @@ while num > 5:
        
 #------------------------------------P3
     
-num = 100
-while num >= 10:
+num = 0
+while num <= 50:
     print(num, end = " ")
     num+=5
 
