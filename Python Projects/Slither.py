@@ -38,7 +38,7 @@ class pellet:
 pelletBag = list()
 
 for i in range(10):
-    pelletBag.append(pellet(random.randrange(0,400), random.randrange(0,400), 100, 20, 220, 10)) #randomizes x,y values and puts the pellets randomly on the screen
+    pelletBag.append(pellet(random.randrange(0,400), random.randrange(0,400), random.randrange(0,255), random.randrange(0,255), random.randrange(0,255), 10)) #randomizes x,y values and puts the pellets randomly on the screen
 
 
 #BEGIN GAME LOOP######################################################
