@@ -7,7 +7,7 @@ int main(){
     int num = 5;
 
     //call the window title function
-    SetConsoleTitleA("My Awsome Game!");
+    SetConsoleTitleA("My Awesome Game!");
 
     while (num > 0) {
 
@@ -31,7 +31,5 @@ int main(){
 
 
     } //end of while loop
-
-    return 0;
 
 } //end of main
