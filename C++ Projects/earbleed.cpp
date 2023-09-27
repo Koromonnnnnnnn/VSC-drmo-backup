@@ -18,7 +18,7 @@ int main(){
         Beep(500, 800);
 
         //a new color!
-        system("COLOR 84");
+        system("COLOR B4");
 
         //call the messagebox function
         MessageBox(nullptr, TEXT("Python Sucks!!"), TEXT("C++ Rules."), MB_OK);
