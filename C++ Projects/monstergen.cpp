@@ -5,7 +5,7 @@ void monsterGen(); //declaration
 
 int main(){
     char input;
-    while (1){ //game loop!
+    while (1) { //game loop!
         //your text based game goes here!
         monsterGen();
         cout << "press any key to continue..." << endl;
@@ -14,14 +14,16 @@ int main(){
     }
 }
 
-void monsterGen(){
-    int num = rand() % 100 + 1; //creates a number between 1-100
-    if (num < 20) //20% of a witch
+void monsterGen() {
+    int num = rand() % 100; //creates a number between 1-100
+    if (num < 15) //15
         cout << "a witch spawned." << endl;
-    else if (num < 50) //30% chance of a skele
-        cout << "a skeleton appeared!" << endl;
-    else if (num < 60) //10%
+    else if (num < 20) //5
+        cout << "a kraken appeared!" << endl;
+    else if (num < 50) //30
         cout << "an alien appears!" << endl;
-    else //40%
-        cout << "nothing appeared." << endl;
+    else if (num < 75) //25
+        cout << "a wilf dog appears!" << endl;
+    else 
+        cout << "final monster appeared!" << endl;
 }
