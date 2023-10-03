@@ -5,7 +5,7 @@ pygame.init()
 #creates game screen and caption
 
 screen = pygame.display.set_mode((800, 800)) #create game screen
-pygame.display.set_caption("A lovely House! - Jaime C") #window title
+pygame.display.set_caption("A lovely House!") #window title
 
 pygame.draw.rect(screen, (200, 0, 200), (200, 400, 300, 300))
 pygame.draw.rect(screen, (255, 255, 255), (380, 350, 100, 100))

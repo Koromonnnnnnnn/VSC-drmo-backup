@@ -7,7 +7,7 @@ pygame.init()
 
 #creates game screen and caption
 screen = pygame.display.set_mode((400, 400))
-pygame.display.set_caption("Slither-Jaime")
+pygame.display.set_caption("Slither")
 clock = pygame.time.Clock()
 
 #game variables
