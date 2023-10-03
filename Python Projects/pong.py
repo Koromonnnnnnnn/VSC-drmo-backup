@@ -82,19 +82,19 @@ while not doExit:
 
     font = pygame.font.Font(None, 74)
 
-    text = font.render(str(p1Score), 1, (8, 74, 255))
+    text = font.render(str(p1Score), 1, (255,255,255))
 
     screen.blit(text, (250,10))
 
-    text = font.render(str(p2Score), 1, (255, 0, 136))
+    text = font.render(str(p2Score), 1, (255,255,255))
 
     screen.blit(text, (420,10))
 
     pygame.draw.line(screen, (255,255,255), [349, 0], [349, 500], 5)
 
-    pygame.draw.rect(screen, (8, 74, 255), (p1x, p1y, 20, 100), 20)
+    pygame.draw.rect(screen, (255,255,255), (p1x, p1y, 20, 100), 20)
 
-    pygame.draw.rect(screen, (255, 0, 136), (p2x, p2y, 20, 100), 20)
+    pygame.draw.rect(screen, (255,255,255), (p2x, p2y, 20, 100), 20)
 
     pygame.draw.circle(screen, (255, 255, 255), (bx, by), 15)
 
