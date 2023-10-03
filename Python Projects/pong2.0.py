@@ -1,4 +1,4 @@
-#not by me
+#not written by me
 import pygame
 pygame.init()
 

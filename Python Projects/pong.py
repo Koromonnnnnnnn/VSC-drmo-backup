@@ -15,7 +15,10 @@ clock = pygame.time.Clock()
 p1x = 20
 p1y = 200
 
-p2x = 660
+p1Score = 0
+p2Score = 0
+
+p2x = 650
 p2y = 200
 
 bx = 350
@@ -26,6 +29,8 @@ bVy = 5
 
 #BEGIN GAME LOOP######################################################
 while not doExit:
+
+    clock.tick(60)
    
     #pygame's way of listening for events (key presses, mouse clicks, etc)
     for event in pygame.event.get():
@@ -48,21 +53,50 @@ while not doExit:
     bx += bVx
     by += bVy
 
-    if bx < 0 or bx + 20 > 700:
+    if by <= 0 or by + 20 >= 500:
+       bVy *= -1
+    
+    #left paddle collision
+    if bx-20 < p1x + 20 and by + 20 > p1y and by < p1y + 100:
         bVx *= -1
-    if by < 0 or by + 20 > 700:
-        bVy *= -1
+        
+    #right paddle collision
+    if by < p2y + 100 and bx + 20 > p2x and by + 20 > p2y:
+        bVx *= -1
+
+    if bx < 10:
+        bVx *= -1
+        p2Score += 1
+        
+    elif bx > 680:
+        bVx *= -1
+        p1Score += 1
+        
+    
+    
 
     #render section-----------------------------------
     screen.fill((0,0,0)) #wipe the screen black
     
-    pygame.draw.line(screen, (255, 255, 255), [349, 0], [349,500], 5)
+    screen.fill((0,0,0))
 
-    pygame.draw.rect(screen, (255, 255, 255), (p1x, p1y, 20, 100), 1)
+    font = pygame.font.Font(None, 74)
 
-    pygame.draw.rect(screen, (255, 255, 255), (p2x, p2y, 20, 100), 1)
+    text = font.render(str(p1Score), 1, (8, 74, 255))
 
-    pygame.draw.circle(screen, (244, 244, 244), (bVx, bVy), 50)
+    screen.blit(text, (250,10))
+
+    text = font.render(str(p2Score), 1, (255, 0, 136))
+
+    screen.blit(text, (420,10))
+
+    pygame.draw.line(screen, (255,255,255), [349, 0], [349, 500], 5)
+
+    pygame.draw.rect(screen, (8, 74, 255), (p1x, p1y, 20, 100), 20)
+
+    pygame.draw.rect(screen, (255, 0, 136), (p2x, p2y, 20, 100), 20)
+
+    pygame.draw.circle(screen, (255, 255, 255), (bx, by), 15)
 
     pygame.display.flip() #update graphics each game loop
 
