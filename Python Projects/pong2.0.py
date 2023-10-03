@@ -1,3 +1,4 @@
+#not by me
 import pygame
 pygame.init()
 
