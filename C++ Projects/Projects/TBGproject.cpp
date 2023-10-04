@@ -50,7 +50,7 @@ int main(){
 void monsterGen() {
     int num = rand() % 100; //creates a number between 1-100
     if (num < 15) //15
-        cout << "A witch spawned." << endl;
+        cout << "A witch appeared!" << endl;
     else if (num < 20) //5
         cout << "A kraken appeared!" << endl;
     else if (num < 50) //30
@@ -58,7 +58,7 @@ void monsterGen() {
     else if (num < 75) //25
         cout << "A wild dog appears!" << endl;
     else 
-        cout << "Nothing has spawned" << endl;
+        cout << "Nothing has spawned." << endl;
 }
 
 void lootGen() {
