@@ -40,6 +40,22 @@ int main(){
             if (destination == 'n' || destination == 'N')
                 roomIn = 1; //2
 			break;
+		case 3:
+			cout << "You are in 'Room 4', you can go (E)ast to 'Room Five', or (N)orth back to 'Room Three'" << endl;
+			cin >> destination;
+			if (destination == 'e' || destination == 'E') 
+				roomIn = 4; //5
+            if (destination == 'n' || destination == 'N')
+                roomIn = 2; //3
+			break;
+		case 4:
+			cout << "You are in 'Room 5', you can go (N)orth to 'Room Six', or (W)est back to 'Room Four'" << endl;
+			cin >> destination;
+			if (destination == 'n' || destination == 'N') 
+				roomIn = 5; //6
+            if (destination == 'w' || destination == 'W')
+                roomIn = 3; //3
+			break;
         }
     }           
 }
