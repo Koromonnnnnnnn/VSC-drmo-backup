@@ -21,27 +21,24 @@ int main(){
         case 0:
             cout << "You are in 'Room One', do you wish to go (E)ast towards 'Room Two'?" << endl;
 			cin >> destination;
-			if (destination == 'e' || destination == 'E') {
+			if (destination == 'e' || destination == 'E')
 				roomIn = 1; //2
-			}
 			break;
 		case 1:
             cout << "You are in 'Room Two', do you wish to go (S)outh towards 'Room Three'? Or (W)est back to 'Room One'" << endl;
 			cin >> destination;
-			if (destination == 's' || destination == 'S') {
+			if (destination == 's' || destination == 'S') 
 				roomIn = 2; //3
             if (destination == 'w' || destination == 'W')
                 roomIn = 0; //1
-        	}
 			break;
 		case 2:
 			cout << "You are in 'Room 3', you can go (S)outh to 'Room Four' (Cave), or (N)orth back to 'Room Two'" << endl;
 			cin >> destination;
-			if (destination == 's' || destination == 'S') {
+			if (destination == 's' || destination == 'S') 
 				roomIn = 3; //4
             if (destination == 'n' || destination == 'N')
                 roomIn = 1; //2
-        	}
 			break;
         }
     }           
