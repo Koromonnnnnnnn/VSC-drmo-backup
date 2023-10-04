@@ -11,7 +11,7 @@ int main(){
 	bool gameGoing = true;
 
     cout << "You wake up somewhere unknown. Bright green grass and orange trees surround you." << endl;
-    cout << "Your memory is foggy and you can't quite remember anything about yourself, or how you got to this mysterious place..." << endl;
+    cout << "Your memory is foggy and you can't quite remember anything about yourself, or how you got to this mysterious place." << endl;
     cout << "The only path forward is a steep set of ancient stone stairs." << endl;
     cout << "Press '0' to play..." << endl;
 	cin >> roomIn;
