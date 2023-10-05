@@ -10,6 +10,8 @@ int main(){
     char initialQuestion;
 	bool gameGoing = true;
 
+
+    cout << "Welcome to \"The Forgotten Prophecy\"" << endl;
     cout << "You wake up somewhere unknown. Bright green grass and orange trees surround you." << endl;
     cout << "Your memory is foggy and you can't quite remember anything about yourself, or how you got to this mysterious place." << endl;
     cout << "The only path forward is a steep set of ancient stone stairs." << endl;
@@ -55,6 +57,14 @@ int main(){
 				roomIn = 5; //6
             if (destination == 'w' || destination == 'W')
                 roomIn = 3; //3
+			break;
+		case 5:
+			cout << "You are in 'Room 6', you can go (E)ast to 'Room Seven', or (S)outh back to 'Room Five'" << endl;
+			cin >> destination;
+			if (destination == 'e' || destination == 'E') 
+				roomIn = 6; //7
+            if (destination == 's' || destination == 'S')
+                roomIn = 4; //5
 			break;
         }
     }           
