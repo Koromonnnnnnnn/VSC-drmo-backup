@@ -3,6 +3,8 @@ using namespace std;
 
 void monsterGen();
 void lootGen();
+void deathSong();
+void victorySong();
 
 int main(){
 	char destination;
@@ -96,4 +98,16 @@ void lootGen() {
         cout << "You found a mythical bow!" << endl;
     else 
         cout << "Nothing has spawned" << endl;
+}
+
+void deathSong() {
+
+
+
+}
+
+void victorySong() {
+
+
+    
 }
