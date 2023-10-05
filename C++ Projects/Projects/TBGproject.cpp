@@ -98,7 +98,7 @@ void lootGen() {
     else if (num < 75) //25
         cout << "You found a mythical bow!" << endl;
     else 
-        cout << "Nothing has spawned" << endl;
+        cout << "Nothing has spawned." << endl;
 }
 
 void deathSong() {
