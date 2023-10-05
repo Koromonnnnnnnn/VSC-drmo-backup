@@ -38,7 +38,7 @@ int main(){
                 roomIn = 0; //1
 			break;
 		case 2:
-			cout << "You are in 'Room 3', you can go (S)outh to 'Room Four' (Cave), or (N)orth back to 'Room Two'" << endl;
+			cout << "You are in 'Room Three', you can go (S)outh to 'Room Four' (Cave), or (N)orth back to 'Room Two'" << endl;
 			cin >> destination;
 			if (destination == 's' || destination == 'S') 
 				roomIn = 3; //4
@@ -46,7 +46,7 @@ int main(){
                 roomIn = 1; //2
 			break;
 		case 3:
-			cout << "You are in 'Room 4', you can go (E)ast to 'Room Five', or (N)orth back to 'Room Three'" << endl;
+			cout << "You are in 'Room Four', you can go (E)ast to 'Room Five', or (N)orth back to 'Room Three'" << endl;
 			cin >> destination;
 			if (destination == 'e' || destination == 'E') 
 				roomIn = 4; //5
@@ -54,7 +54,7 @@ int main(){
                 roomIn = 2; //3
 			break;
 		case 4:
-			cout << "You are in 'Room 5', you can go (N)orth to 'Room Six', or (W)est back to 'Room Four'" << endl;
+			cout << "You are in 'Room Five', you can go (N)orth to 'Room Six', or (W)est back to 'Room Four'" << endl;
 			cin >> destination;
 			if (destination == 'n' || destination == 'N') 
 				roomIn = 5; //6
@@ -62,7 +62,7 @@ int main(){
                 roomIn = 3; //3
 			break;
 		case 5:
-			cout << "You are in 'Room 6', you can go (E)ast to 'Room Seven', or (S)outh back to 'Room Five'" << endl;
+			cout << "You are in 'Room Six', you can go (E)ast to 'Room Seven', or (S)outh back to 'Room Five'" << endl;
 			cin >> destination;
 			if (destination == 'e' || destination == 'E') 
 				roomIn = 6; //7
