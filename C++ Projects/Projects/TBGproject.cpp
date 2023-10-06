@@ -10,6 +10,8 @@ void lootGen();
 void deathSong();
 void victorySong();
 void welcomeSong();
+void attackSong();
+void damageSong();
 
 int main()
 {
@@ -44,15 +46,25 @@ int main()
             {
                 monsterHealth -= playerDamage;
                 cout << "You attack the " << monster << "for " << playerDamage << " damage" << endl;
-                cout << monster << " attacks you for " << monsterDamage << " damage" << endl;
+                if (playerHealth > 0)
+                {
+                    playerHealth -= monsterDamage;
+                    cout << monster << " attacks you for " << monsterDamage << " damage" << endl;
+                }
+                else
+                {
+                    deathSong();
+                    cout << "You are dead..." << endl;
+                }
+
                 cout << "Press any key to attack again" << endl;
                 getch();
+                cout << "You have slayed " << monster << endl;
+                cout << "You are in 'Room One', do you wish to go (E)ast towards 'Room Two'?" << endl;
+                cin >> destination;
+                if (destination == 'e' || destination == 'E')
+                    roomIn = 1; // 2
             }
-
-            cout << "You are in 'Room One', do you wish to go (E)ast towards 'Room Two'?" << endl;
-            cin >> destination;
-            if (destination == 'e' || destination == 'E')
-                roomIn = 1; // 2
             break;
         case 1:
             cout << "You are in 'Room Two', do you wish to go (S)outh towards 'Room Three'? Or (W)est back to 'Room One'" << endl;
@@ -102,13 +114,13 @@ char monsterGen()
 {
     int num = rand() % 100; // creates a number between 1-100
     char monster;
-    if (num < 15)
+    if (num < 15)      // 15%
         monster = 'W'; // Witch
-    else if (num < 20)
+    else if (num < 20) // 5%
         monster = 'K'; // Kraken
-    else if (num < 50)
+    else if (num < 50) // 30%
         monster = 'A'; // Alien
-    else if (num < 75)
+    else if (num < 75) // 25%
         monster = 'D'; // Dog
     else
         monster = 'M'; // Mysterious Entity
@@ -154,4 +166,12 @@ void victorySong()
         Beep(notes[i], durations[i]);
         Sleep(100);
     }
+}
+
+void damageSong()
+{
+}
+
+void attackSong()
+{
 }
