@@ -1,6 +1,7 @@
 #include <iostream>
 #include <Windows.h>
 #include <string>
+#include <conio.h>
 using namespace std;
 
 void monsterGen();
@@ -8,12 +9,29 @@ void lootGen();
 
 void deathSong();
 void victorySong();
+void welcomeSong();
+
+struct Item {
+    string name;
+    int damage;
+    int armor;
+};
+
+struct Monster {
+    string name;
+    int health;
+    int damage;
+};
+
+
 
 int main(){
 	char destination;
 	int roomIn;
     char initialQuestion;
 	bool gameGoing = true;
+    int playerHealth = 100;
+    int playerDamage = 25;
 
 
     cout << "Welcome to \"The Forgotten Prophecy\"" << endl;
@@ -78,15 +96,15 @@ int main(){
 void monsterGen() {
     int num = rand() % 100; //creates a number between 1-100
     if (num < 15) //15
-        cout << "A witch appeared!" << endl;
+        cout << " witch " << endl;
     else if (num < 20) //5
-        cout << "A kraken appeared!" << endl;
+        cout << " kraken " << endl;
     else if (num < 50) //30
-        cout << "An alien appears!" << endl;
+        cout << " alien " << endl;
     else if (num < 75) //25
-        cout << "A wild dog appears!" << endl;
+        cout << " wild dog " << endl;
     else 
-        cout << "Nothing has spawned." << endl;
+        cout << " mysterious entity " << endl;
 }
 
 void lootGen() {
