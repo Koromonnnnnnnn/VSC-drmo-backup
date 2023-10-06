@@ -22,6 +22,7 @@ int main()
 {
     char destination;
     int roomIn;
+    int enter;
     char initialQuestion;
     string monster;
     string chestLoot;
@@ -47,7 +48,7 @@ int main()
             cout << "You are currently in Room One" << endl;
             cout << "A wild " << monster << " appears!" << endl;
             monsterGen();
-            cout << "Press any key to attack" << endl;
+            cout << "Press any enter to attack" << endl;
             getch();
             while (monsterHealth > 0)
             {
@@ -64,15 +65,15 @@ int main()
                     cout << "You are dead..." << endl;
                 }
 
-                cout << "Press any key to attack again" << endl;
-                getch();
+                cout << "Press enter key to attack again" << endl;
+                cin.get();
                 cout << "You have slayed " << monster << endl;
                 cout << "You look around the room and spot a chest!" << endl;
-                cout << "Press any key to open the chest..." << endl;
+                cout << "Press any enter  to open the chest..." << endl;
                 chestLoot = lootGen();
                 getch();
                 cout << "You have found " << chestLoot << endl;
-                cout << "Press any key to continue" << endl;
+                cout << "Press any enter to continue" << endl;
                 getch();
                 cout << "You are in 'Room One', do you wish to go (E)ast towards 'Room Two'?" << endl;
                 cin >> destination;
