@@ -2,10 +2,11 @@
 #include <Windows.h>
 #include <string>
 #include <conio.h>
+#include <ctime>
 using namespace std;
 
-char monsterGen();
-void lootGen();
+string monsterGen();
+string lootGen();
 
 void deathSong();
 void victorySong();
@@ -18,7 +19,8 @@ int main()
     char destination;
     int roomIn;
     char initialQuestion;
-    char monster;
+    string monster;
+    string chestLoot;
     bool gameGoing = true;
     int playerHealth = 100;
     int playerDamage = 25;
@@ -45,7 +47,7 @@ int main()
             while (monsterHealth > 0)
             {
                 monsterHealth -= playerDamage;
-                cout << "You attack the " << monster << "for " << playerDamage << " damage" << endl;
+                cout << "You attack the " << monster << " for " << playerDamage << " damage" << endl;
                 if (playerHealth > 0)
                 {
                     playerHealth -= monsterDamage;
@@ -59,7 +61,14 @@ int main()
 
                 cout << "Press any key to attack again" << endl;
                 getch();
-                cout << "You have slayed " << monster << endl; //left off here
+                cout << "You have slayed " << monster << endl;
+                cout << "You look around the room and spot a chest!" << endl;
+                cout << "Press any key to open the chest..." << endl;
+                chestLoot = lootGen();
+                getch();
+                cout << "You have found " << chestLoot << endl;
+                cout << "Press any key to continue" << endl;
+                getch();
                 cout << "You are in 'Room One', do you wish to go (E)ast towards 'Room Two'?" << endl;
                 cin >> destination;
                 if (destination == 'e' || destination == 'E')
@@ -110,36 +119,30 @@ int main()
     }
 }
 
-char monsterGen()
+string monsterGen()
 {
-    int num = rand() % 100; // creates a number between 1-100
-    char monster;
-    if (num < 15)      // 15%
-        monster = 'W'; // Witch
-    else if (num < 20) // 5%
-        monster = 'K'; // Kraken
-    else if (num < 50) // 30%
-        monster = 'A'; // Alien
-    else if (num < 75) // 25%
-        monster = 'D'; // Dog
-    else
-        monster = 'M'; // Mysterious Entity
-    return monster;
+    string monsterItems[] = {"Witch", "Kraken", "Alien", "Dog", "Mysterious Entity"};
+
+    int numItems = sizeof(monsterItems) / sizeof(monsterItems[0]);
+
+    srand(time(0));
+
+    int randomIndex = rand() % numItems;
+
+    return monsterItems[randomIndex];
 }
 
-void lootGen()
+string lootGen()
 {
-    int num = rand() % 100; // creates a number between 1-100
-    if (num < 15)           // 15
-        cout << "You found a gun!" << endl;
-    else if (num < 20) // 5
-        cout << "You found a sword!" << endl;
-    else if (num < 50) // 30
-        cout << "You found a legendary sword!" << endl;
-    else if (num < 75) // 25
-        cout << "You found a mythical bow!" << endl;
-    else
-        cout << "Nothing has spawned." << endl;
+    string chestItems[] = {"Sword", "Spear", "Trident", "Bow", "Godly Bolt"};
+
+    int numItems = sizeof(chestItems) / sizeof(chestItems[0]);
+
+    srand(time(0));
+
+    int randomIndex = rand() % numItems;
+
+    return chestItems[randomIndex];
 }
 
 void deathSong()
