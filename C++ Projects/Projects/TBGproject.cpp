@@ -4,6 +4,7 @@ using namespace std;
 
 void monsterGen();
 void lootGen();
+
 void deathSong();
 void victorySong();
 
