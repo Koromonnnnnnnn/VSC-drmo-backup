@@ -20,6 +20,8 @@ int main()
     bool gameGoing = true;
     int playerHealth = 100;
     int playerDamage = 25;
+    int monsterHealth = 50;
+    int monsterDamage = 10;
 
     cout << "Welcome to \"The Forgotten Prophecy\"" << endl;
     cout << "You wake up somewhere unknown. Bright green grass and orange trees surround you." << endl;
@@ -33,8 +35,6 @@ int main()
         switch (roomIn)
         {
         case 0:
-            int monsterHealth = 50;
-            int monsterDamage = 10;
             monster = monsterGen();
             cout << "You are currently in Room One" << endl;
             monsterGen();
@@ -103,15 +103,15 @@ char monsterGen()
     int num = rand() % 100; // creates a number between 1-100
     char monster;
     if (num < 15)
-        monster = 'W'; //Witch
-    else if (num < 20) 
-        monster = 'K'; //Kraken
+        monster = 'W'; // Witch
+    else if (num < 20)
+        monster = 'K'; // Kraken
     else if (num < 50)
-        monster = 'A'; //Alien
-    else if (num < 75) 
-        monster = 'D'; //Dog
+        monster = 'A'; // Alien
+    else if (num < 75)
+        monster = 'D'; // Dog
     else
-        monster = 'M'; //Mysterious Entity
+        monster = 'M'; // Mysterious Entity
     return monster;
 }
 
