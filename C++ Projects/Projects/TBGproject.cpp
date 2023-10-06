@@ -1,5 +1,6 @@
 #include <iostream>
 #include <Windows.h>
+#include <string>
 using namespace std;
 
 void monsterGen();
@@ -104,12 +105,23 @@ void lootGen() {
 
 void deathSong() {
 
+    int notes[] = {392, 349, 330, 293, 261};
+    int durations[] = {200, 200, 200, 400, 400};
 
+    for (int i = 0; i < 5; i++) {
+        Beep(notes[i], durations[i]);
+        Sleep(100);
+    }
 
 }
 
 void victorySong() {
 
+    int notes[] = {523, 587, 659, 698, 783, 880, 987, 1046};
+    int durations[] = {500, 500, 500, 500, 500, 500, 500, 1000};
 
-    
+    for (int i = 0; i < 8; i++) {
+        Beep(notes[i], durations[i]);
+        Sleep(100);
+    }
 }
