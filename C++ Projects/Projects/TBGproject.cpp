@@ -4,32 +4,19 @@
 #include <conio.h>
 using namespace std;
 
-void monsterGen();
+char monsterGen();
 void lootGen();
 
 void deathSong();
 void victorySong();
 void welcomeSong();
 
-struct Item
-{
-    string name;
-    int damage;
-    int armor;
-};
-
-struct Monster
-{
-    string name;
-    int health;
-    int damage;
-};
-
 int main()
 {
     char destination;
     int roomIn;
     char initialQuestion;
+    char monster;
     bool gameGoing = true;
     int playerHealth = 100;
     int playerDamage = 25;
@@ -46,6 +33,22 @@ int main()
         switch (roomIn)
         {
         case 0:
+            int monsterHealth = 50;
+            int monsterDamage = 10;
+            monster = monsterGen();
+            cout << "You are currently in Room One" << endl;
+            monsterGen();
+            cout << "Press any key to attack" << endl;
+            getch();
+            while (monsterHealth > 0)
+            {
+                monsterHealth -= playerDamage;
+                cout << "You attack the " << monster << "for " << playerDamage << " damage" << endl;
+                cout << monster << " attacks you for " << monsterDamage << " damage" << endl;
+                cout << "Press any key to attack again" << endl;
+                getch();
+            }
+
             cout << "You are in 'Room One', do you wish to go (E)ast towards 'Room Two'?" << endl;
             cin >> destination;
             if (destination == 'e' || destination == 'E')
@@ -95,19 +98,21 @@ int main()
     }
 }
 
-void monsterGen()
+char monsterGen()
 {
     int num = rand() % 100; // creates a number between 1-100
-    if (num < 15)           // 15
-        cout << " witch " << endl;
-    else if (num < 20) // 5
-        cout << " kraken " << endl;
-    else if (num < 50) // 30
-        cout << " alien " << endl;
-    else if (num < 75) // 25
-        cout << " wild dog " << endl;
+    char monster;
+    if (num < 15)
+        monster = 'W'; //Witch
+    else if (num < 20) 
+        monster = 'K'; //Kraken
+    else if (num < 50)
+        monster = 'A'; //Alien
+    else if (num < 75) 
+        monster = 'D'; //Dog
     else
-        cout << " mysterious entity " << endl;
+        monster = 'M'; //Mysterious Entity
+    return monster;
 }
 
 void lootGen()
