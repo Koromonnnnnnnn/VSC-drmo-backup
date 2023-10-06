@@ -45,6 +45,7 @@ int main()
         case 0:
             monster = monsterGen();
             cout << "You are currently in Room One" << endl;
+            cout << "A wild " << monster << " appears!" << endl;
             monsterGen();
             cout << "Press any key to attack" << endl;
             getch();
