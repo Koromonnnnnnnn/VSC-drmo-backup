@@ -5,26 +5,21 @@
 #include <ctime>
 using namespace std;
 
-// gens
+//gens
 string monsterGen();
 string lootGen();
 
-// songs
+//songs
 void deathSong();
 void victorySong();
 void welcomeSong();
 void attackSong();
 void damageSong();
 
-// other functions
-
-// variables
-const int MAX_INVENTORY_SIZE = 10;
+//other functions
 
 int main()
 {
-    string inventory[MAX_INVENTORY_SIZE]; // Create an array to store weapons
-    int itemCount = 0;
     char destination;
     int roomIn;
     char initialQuestion;
@@ -45,9 +40,6 @@ int main()
 
     while (gameGoing)
     {
-        char choice1;
-        int choice2;
-
         switch (roomIn)
         {
         case 0:
@@ -81,115 +73,54 @@ int main()
                 cout << "You have found " << chestLoot << endl;
                 cout << "Press any key to continue" << endl;
                 getch();
-                cout << "Would you like to add " << chestLoot << " to your inventory? (Y/N)" << endl;
-                cin >> choice1;
-                if (choice1 == 'y' || choice1 == 'Y')
-                    switch (choice2)
-                    {
-                    case 1:
-                        if (itemCount < MAX_INVENTORY_SIZE)
-                        {
-                            cout << "Enter the name of the weapon to add: ";
-                            cin >> inventory[itemCount];
-                            itemCount++;
-                            cout << "Weapon added to your inventory." << endl;
-                        }
-                        else
-                        {
-                            cout << "Your inventory is full." << endl;
-                        }
-                        break;
-                    case 2:
-                        if (itemCount > 0)
-                        {
-                            cout << "Enter the name of the weapon to remove: ";
-                            string weaponToRemove;
-                            cin >> weaponToRemove;
-
-                            // Search for the weapon and remove it if found
-                            for (int i = 0; i < itemCount; i++)
-                            {
-                                if (inventory[i] == weaponToRemove)
-                                {
-                                    // Shift remaining items to fill the gap
-                                    for (int j = i; j < itemCount - 1; j++)
-                                    {
-                                        inventory[j] = inventory[j + 1];
-                                    }
-                                    itemCount--;
-                                    cout << "Weapon removed from your inventory." << endl;
-                                    break;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            cout << "Your inventory is empty." << endl;
-                        }
-                        break;
-                    case 3:
-                        cout << "Your Weapons:" << endl;
-                        for (int i = 0; i < itemCount; i++)
-                        {
-                            cout << inventory[i] << endl;
-                        }
-                        break;
-                    case 4:
-                        cout << "Exiting the inventory system." << endl;
-                        return 0;
-                    default:
-                        cout << "Invalid choice. Please try again." << endl;
-                    }
+                cout << "You are in 'Room One', do you wish to go (E)ast towards 'Room Two'?" << endl;
+                cin >> destination;
+                if (destination == 'e' || destination == 'E')
+                    roomIn = 1; // 2
             }
+            break;
+        case 1:
+            cout << "You are in 'Room Two', do you wish to go (S)outh towards 'Room Three'? Or (W)est back to 'Room One'" << endl;
+            cin >> destination;
+            if (destination == 's' || destination == 'S')
+                roomIn = 2; // 3
+            if (destination == 'w' || destination == 'W')
+                roomIn = 0; // 1
+            break;
+        case 2:
+            cout << "You are in 'Room Three', you can go (S)outh to 'Room Four' (Cave), or (N)orth back to 'Room Two'" << endl;
+            cin >> destination;
+            if (destination == 's' || destination == 'S')
+                roomIn = 3; // 4
+            if (destination == 'n' || destination == 'N')
+                roomIn = 1; // 2
+            break;
+        case 3:
+            cout << "You are in 'Room Four', you can go (E)ast to 'Room Five', or (N)orth back to 'Room Three'" << endl;
+            cin >> destination;
+            if (destination == 'e' || destination == 'E')
+                roomIn = 4; // 5
+            if (destination == 'n' || destination == 'N')
+                roomIn = 2; // 3
+            break;
+        case 4:
+            cout << "You are in 'Room Five', you can go (N)orth to 'Room Six', or (W)est back to 'Room Four'" << endl;
+            cin >> destination;
+            if (destination == 'n' || destination == 'N')
+                roomIn = 5; // 6
+            if (destination == 'w' || destination == 'W')
+                roomIn = 3; // 3
+            break;
+        case 5:
+            cout << "You are in 'Room Six', you can go (E)ast to 'Room Seven', or (S)outh back to 'Room Five'" << endl;
+            cin >> destination;
+            if (destination == 'e' || destination == 'E')
+                roomIn = 6; // 7
+            if (destination == 's' || destination == 'S')
+                roomIn = 4; // 5
+            break;
         }
-        cout << "You are in 'Room One', do you wish to go (E)ast towards 'Room Two'?" << endl;
-        cin >> destination;
-        if (destination == 'e' || destination == 'E')
-            roomIn = 1; // 2
     }
-
-case 1:
-    cout << "You are in 'Room Two', do you wish to go (S)outh towards 'Room Three'? Or (W)est back to 'Room One'" << endl;
-    cin >> destination;
-    if (destination == 's' || destination == 'S')
-        roomIn = 2; // 3
-    if (destination == 'w' || destination == 'W')
-        roomIn = 0; // 1
-    break;
-case 2:
-    cout << "You are in 'Room Three', you can go (S)outh to 'Room Four' (Cave), or (N)orth back to 'Room Two'" << endl;
-    cin >> destination;
-    if (destination == 's' || destination == 'S')
-        roomIn = 3; // 4
-    if (destination == 'n' || destination == 'N')
-        roomIn = 1; // 2
-    break;
-case 3:
-    cout << "You are in 'Room Four', you can go (E)ast to 'Room Five', or (N)orth back to 'Room Three'" << endl;
-    cin >> destination;
-    if (destination == 'e' || destination == 'E')
-        roomIn = 4; // 5
-    if (destination == 'n' || destination == 'N')
-        roomIn = 2; // 3
-    break;
-case 4:
-    cout << "You are in 'Room Five', you can go (N)orth to 'Room Six', or (W)est back to 'Room Four'" << endl;
-    cin >> destination;
-    if (destination == 'n' || destination == 'N')
-        roomIn = 5; // 6
-    if (destination == 'w' || destination == 'W')
-        roomIn = 3; // 3
-    break;
-case 5:
-    cout << "You are in 'Room Six', you can go (E)ast to 'Room Seven', or (S)outh back to 'Room Five'" << endl;
-    cin >> destination;
-    if (destination == 'e' || destination == 'E')
-        roomIn = 6; // 7
-    if (destination == 's' || destination == 'S')
-        roomIn = 4; // 5
-    break;
-}
-}
 }
 
 string monsterGen()

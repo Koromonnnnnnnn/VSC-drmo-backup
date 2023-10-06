@@ -1,7 +1,6 @@
 {
     "files.associations": {
-        "iostream": "cpp",
-        "xstring": "cpp"
+        "iostream": "cpp"
     },
     "cmake.configureOnOpen": false,
     "[python]": {
