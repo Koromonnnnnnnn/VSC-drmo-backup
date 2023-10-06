@@ -59,7 +59,7 @@ int main()
 
                 cout << "Press any key to attack again" << endl;
                 getch();
-                cout << "You have slayed " << monster << endl;
+                cout << "You have slayed " << monster << endl; //left off here
                 cout << "You are in 'Room One', do you wish to go (E)ast towards 'Room Two'?" << endl;
                 cin >> destination;
                 if (destination == 'e' || destination == 'E')
