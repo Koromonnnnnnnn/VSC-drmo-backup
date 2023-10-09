@@ -17,6 +17,7 @@ void damageSong();
 
 // inventory
 const int inventorySize = 10;
+void inventoryMenu();
 
 // other functions
 
@@ -46,6 +47,7 @@ int main()
     // inventory
     string inventory[inventorySize]; // Create a list to store weapons
     int itemCount = 0;
+    char inventoryChoice;
 
     cout << "Welcome to \"The Forgotten Prophecy\"" << endl;
     cout << "You wake up somewhere unknown. Bright green grass and orange trees surround you." << endl;
@@ -99,6 +101,8 @@ int main()
                 cin.ignore();
                 cin.get();
                 cout << "You have found " << chestLoot << endl;
+                cout << "Would you like to add this item to your inventory? Y/N" << endl;
+
                 cout << "Continue? Y/N" << endl;
                 cin >> finalQuestion;
                 if (finalQuestion == 'y' || finalQuestion == 'Y')
@@ -189,6 +193,10 @@ string lootGen()
     int randomIndex = rand() % numItems;
 
     return chestItems[randomIndex];
+}
+
+void inventoryMenu(){
+
 }
 
 void deathSong()
