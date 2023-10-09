@@ -15,18 +15,29 @@ void welcomeSong();
 void attackSong();
 void damageSong();
 
+// inventory
+const int MAX_INVENTORY_SIZE = 10;
+
 // other functions
 
 int main()
 {
+    // nav
     char destination;
     int roomIn;
+
+    // questions after battle
     char initialQuestion;
     char finalQuestion;
+
+    // return
     string monster;
     string chestLoot;
-    string inventory[] = {""};
+
+    // gameloop
     bool gameGoing = true;
+
+    // battle
     int playerHealth = 100;
     int playerDamage = 25;
     int monsterHealth = 50;
@@ -70,7 +81,7 @@ int main()
 
                 if (!gameGoing)
                 {
-                    break; //incase if for some reason it doesnt already quit
+                    break; // incase if for some reason it doesnt already quit
                 }
 
                 cout << "Press enter to attack again" << endl;
