@@ -25,6 +25,7 @@ int main()
     char finalQuestion;
     string monster;
     string chestLoot;
+    string inventory[] = {""};
     bool gameGoing = true;
     int playerHealth = 100;
     int playerDamage = 25;
