@@ -1,29 +1,28 @@
 #include <iostream>
 #include <Windows.h>
 #include <string>
-#include <conio.h>
 #include <ctime>
 using namespace std;
 
-//gens
+// gens
 string monsterGen();
 string lootGen();
 
-//songs
+// songs
 void deathSong();
 void victorySong();
 void welcomeSong();
 void attackSong();
 void damageSong();
 
-//other functions
+// other functions
 
 int main()
 {
     char destination;
     int roomIn;
-    int enter;
     char initialQuestion;
+    char finalQuestion;
     string monster;
     string chestLoot;
     bool gameGoing = true;
@@ -48,8 +47,9 @@ int main()
             cout << "You are currently in Room One" << endl;
             cout << "A wild " << monster << " appears!" << endl;
             monsterGen();
-            cout << "Press any enter to attack" << endl;
-            getch();
+            cout << "Press enter to attack" << endl;
+            cin.ignore();
+            cin.get();
             while (monsterHealth > 0)
             {
                 monsterHealth -= playerDamage;
@@ -59,26 +59,50 @@ int main()
                     playerHealth -= monsterDamage;
                     cout << monster << " attacks you for " << monsterDamage << " damage" << endl;
                 }
-                else
+                if (playerHealth <= 0)
                 {
                     deathSong();
                     cout << "You are dead..." << endl;
+                    gameGoing = false; // End the game if the player dies
+                    break;
                 }
-
-                cout << "Press enter key to attack again" << endl;
+                cout << "Press enter to attack again" << endl;
+                cin.ignore();
                 cin.get();
                 cout << "You have slayed " << monster << endl;
+                monsterHealth -= playerDamage; // kills monster here
                 cout << "You look around the room and spot a chest!" << endl;
-                cout << "Press any enter  to open the chest..." << endl;
+                cout << "Press enter to open the chest..." << endl;
                 chestLoot = lootGen();
-                getch();
+                cin.ignore();
+                cin.get();
                 cout << "You have found " << chestLoot << endl;
-                cout << "Press any enter to continue" << endl;
-                getch();
-                cout << "You are in 'Room One', do you wish to go (E)ast towards 'Room Two'?" << endl;
-                cin >> destination;
-                if (destination == 'e' || destination == 'E')
-                    roomIn = 1; // 2
+
+                if (!gameGoing)
+                {
+                    break;
+                }
+
+                cout << "Continue? Y/N" << endl;
+                cin >> finalQuestion;
+                if (finalQuestion == 'y' || finalQuestion == 'Y')
+                {
+                    cout << "You are in 'Room One', do you wish to go (E)ast towards 'Room Two'?" << endl;
+                    cin.ignore();
+                    cin >> destination;
+                    if (destination == 'e' || destination == 'E')
+                        roomIn = 1; // 2
+                }
+                else if (finalQuestion == 'n' || finalQuestion == 'N')
+                {
+                    cout << "Terminal Destroyed..." << endl;
+                    gameGoing = false;
+                    break;
+                }
+                else
+                {
+                    cout << "Not a valid option..." << endl;
+                }
             }
             break;
         case 1:
@@ -182,5 +206,9 @@ void damageSong()
 }
 
 void attackSong()
+{
+}
+
+void welcomeSong()
 {
 }
