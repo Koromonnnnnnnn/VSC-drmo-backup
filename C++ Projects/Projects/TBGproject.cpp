@@ -69,7 +69,7 @@ int main()
 
                 if (!gameGoing)
                 {
-                    break;
+                    break; //incase if for some reason it doesnt already quit
                 }
 
                 cout << "Press enter to attack again" << endl;
