@@ -17,7 +17,6 @@ void damageSong();
 
 // inventory
 const int inventorySize = 10;
-void invetoryMenu();
 
 // other functions
 
@@ -216,15 +215,6 @@ void victorySong()
         Beep(notes[i], durations[i]);
         Sleep(100);
     }
-}
-
-void inventoryMenu()
-{
-    cout << "Inventory Menu:" << endl;
-    cout << "1. Add Weapon" << endl;
-    cout << "2. Remove Weapon" << endl;
-    cout << "3. List Weapons" << endl;
-    cout << "4. Quit" << endl;
 }
 
 void damageSong()
