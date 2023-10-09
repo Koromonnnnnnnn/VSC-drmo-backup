@@ -218,7 +218,7 @@ void victorySong()
     }
 }
 
-string inventoryMenu()
+void inventoryMenu()
 {
     cout << "Inventory Menu:" << endl;
     cout << "1. Add Weapon" << endl;
