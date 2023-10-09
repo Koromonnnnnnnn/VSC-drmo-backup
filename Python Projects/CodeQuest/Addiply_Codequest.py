@@ -8,4 +8,4 @@ for i in range(cases): #go through the other lines
 
     line = line.split(" ") #split up the line by spaces
 
-    print(int(line[0])+int(line[1]), int(line[0])*int(line[1]))
+    print(int(line[0])+int(line[1]), int(line[0])*int(line[1])) #first number is the sum and next number is multiplied 
