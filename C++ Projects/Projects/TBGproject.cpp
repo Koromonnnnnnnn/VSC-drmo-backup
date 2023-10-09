@@ -44,7 +44,7 @@ int main()
     int monsterDamage = 10;
 
     // inventory
-    string inventory[inventorySize]; // Create an array to store weapons
+    string inventory[inventorySize]; // Create a list to store weapons
     int itemCount = 0;
 
     cout << "Welcome to \"The Forgotten Prophecy\"" << endl;
