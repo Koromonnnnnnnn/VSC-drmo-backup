@@ -66,6 +66,12 @@ int main()
                     gameGoing = false; // End the game if the player dies
                     break;
                 }
+
+                if (!gameGoing)
+                {
+                    break;
+                }
+
                 cout << "Press enter to attack again" << endl;
                 cin.ignore();
                 cin.get();
@@ -77,12 +83,6 @@ int main()
                 cin.ignore();
                 cin.get();
                 cout << "You have found " << chestLoot << endl;
-
-                if (!gameGoing)
-                {
-                    break;
-                }
-
                 cout << "Continue? Y/N" << endl;
                 cin >> finalQuestion;
                 if (finalQuestion == 'y' || finalQuestion == 'Y')
