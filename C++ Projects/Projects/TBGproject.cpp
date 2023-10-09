@@ -16,7 +16,7 @@ void attackSong();
 void damageSong();
 
 // inventory
-const int MAX_INVENTORY_SIZE = 10;
+const int inventorySize = 10;
 
 // other functions
 
@@ -42,6 +42,10 @@ int main()
     int playerDamage = 25;
     int monsterHealth = 50;
     int monsterDamage = 10;
+
+    // inventory
+    string inventory[inventorySize]; // Create an array to store weapons
+    int itemCount = 0;
 
     cout << "Welcome to \"The Forgotten Prophecy\"" << endl;
     cout << "You wake up somewhere unknown. Bright green grass and orange trees surround you." << endl;
