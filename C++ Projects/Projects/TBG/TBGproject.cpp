@@ -102,6 +102,21 @@ int main()
                 cin.get();
                 cout << "You have found " << chestLoot << endl;
                 cout << "Would you like to add this item to your inventory? Y/N" << endl;
+                cin >> inventoryChoice;
+                if (inventoryChoice == 'y' || inventoryChoice == 'Y')
+                {
+                    inventoryMenu();
+                }
+                else if (inventoryChoice == 'n' || inventoryChoice == 'N')
+                {
+                    break;
+                }
+                else
+                {
+                    cout << "invalid option" << endl;
+                    gameGoing = false;
+                    break;
+                }
 
                 cout << "Continue? Y/N" << endl;
                 cin >> finalQuestion;
@@ -195,8 +210,8 @@ string lootGen()
     return chestItems[randomIndex];
 }
 
-void inventoryMenu(){
-
+void inventoryMenu()
+{
 }
 
 void deathSong()
