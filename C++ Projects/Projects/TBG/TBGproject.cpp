@@ -17,6 +17,8 @@ void damageSong();
 
 // inventory
 const int inventorySize = 10;
+int itemCount = 0;
+string inventory[inventorySize]; // Create a list to store weapons
 void inventoryMenu();
 
 // other functions
@@ -45,8 +47,6 @@ int main()
     int monsterDamage = 10;
 
     // inventory
-    string inventory[inventorySize]; // Create a list to store weapons
-    int itemCount = 0;
     char inventoryChoice;
 
     cout << "Welcome to \"The Forgotten Prophecy\"" << endl;
@@ -212,6 +212,17 @@ string lootGen()
 
 void inventoryMenu()
 {
+    if (itemCount < inventorySize)
+    {
+        cout << "Enter the name of the weapon to add: ";
+        cin >> inventory[itemCount];
+        itemCount++;
+        cout << "Weapon added to your inventory." << endl;
+    }
+    else
+    {
+        cout << "Alright then" << endl;
+    }
 }
 
 void deathSong()
