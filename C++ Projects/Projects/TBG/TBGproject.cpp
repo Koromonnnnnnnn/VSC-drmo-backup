@@ -118,6 +118,11 @@ int main()
                     break;
                 }
 
+                if (!gameGoing)
+                {
+                    break; // incase if for some reason it doesnt already quit
+                }
+
                 cout << "Continue? Y/N" << endl;
                 cin >> finalQuestion;
                 if (finalQuestion == 'y' || finalQuestion == 'Y')
