@@ -1,5 +1,6 @@
 from winsound import Beep
 
+
 def StarWarsBeeps():
     Beep(440, 500)
     Beep(440, 500)
@@ -19,5 +20,6 @@ def StarWarsBeeps():
     Beep(349, 350)
     Beep(523, 150)
     Beep(440, 1000)
+
 
 StarWarsBeeps()
