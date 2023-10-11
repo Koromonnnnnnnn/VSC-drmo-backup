@@ -146,6 +146,12 @@ int main()
             }
             break;
         case 1:
+            monsterHealth += monsterHealth; // revive monster for next fight
+            cout << "Press enter to heal" << endl;
+            cin.ignore();
+            cin.get();
+            playerHealth += monsterDamage; //heals player from previous fight damage
+            cout << "You have been healed!" << endl;
             cout << "You are in 'Room Two', do you wish to go (S)outh towards 'Room Three'? Or (W)est back to 'Room One'" << endl;
             cin >> destination;
             if (destination == 's' || destination == 'S')
