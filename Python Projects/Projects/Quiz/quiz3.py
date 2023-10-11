@@ -20,4 +20,3 @@ elif catdogfish == 'F':
     print("blub blub")
 else:
     print("That's not a valid option")
-
