@@ -4,8 +4,8 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "C:\\Users\\764363\\Documents\\VSC dr mo\\C++ Projects",
-                "C:\\Users\\764363\\Documents\\VSC dr mo\\Python Projects"
+                "C:\\Users\\764363\\Documents\\VSC-drmo-backup\\C++ Projects",
+                "C:\\Users\\764363\\Documents\\VSC-drmo-backup\\Python Projects"
             ],
             "defines": [
                 "_DEBUG",
