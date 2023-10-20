@@ -30,9 +30,10 @@ class pellet:
         self.blue = blue
         self.radius = radius
 
-    def draw(self):
-        pygame.draw.circle(screen, (self.red, self.green,
-                           self.blue), (self.xPos, self.yPos), self.radius)
+
+def draw(self):
+    pygame.draw.circle(screen, (self.red, self.green,
+                       self.blue), (self.xPos, self.yPos), self.radius)
 # end class pellet
 
 # p1 = pellet(200, 50, 100, 20, 220, 10)
@@ -44,7 +45,8 @@ pelletBag = list()
 
 for i in range(10):
     pelletBag.append(pellet(random.randrange(0, 400), random.randrange(0, 400), random.randrange(0, 255), random.randrange(
-        0, 255), random.randrange(0, 255), 10))  # randomizes x,y values and puts the pellets randomly on the screen
+        # randomizes x,y values and puts the pellets randomly on the screen
+        0, 255), random.randrange(0, 255), 10))
 
 
 # BEGIN GAME LOOP######################################################
