@@ -20,7 +20,6 @@ Vy = 1
 
 # classes are like a template that you build and then use to stamp out lots of copies of a particular object.
 
-
 class pellet:
     def __init__(self, xPos, yPos, red, green, blue, radius):
         self.xPos = xPos
