@@ -68,7 +68,7 @@ int main()
             cout << "Press enter to attack" << endl;
             cin.ignore();
             cin.get();
-            while (monsterHealth > 0)
+            while (monsterHealth > 0 && playerHealth > 0)
             {
                 monsterHealth -= playerDamage;
                 cout << "You attack the " << monster << " for " << playerDamage << " damage" << endl;
@@ -76,7 +76,7 @@ int main()
                 {
                     playerHealth -= monsterDamage;
                     cout << monster << " attacks you for " << monsterDamage << " damage" << endl;
-                    
+
                 }
                 if (playerHealth <= 0)
                 {
