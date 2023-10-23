@@ -68,36 +68,34 @@ int main()
             cout << "Press enter to attack" << endl;
             cin.ignore();
             cin.get();
-            while (playerHealth > 0)
+            while (monsterHealth > 0)
             {
-                while (monsterHealth > 0)
+                monsterHealth -= playerDamage;
+                cout << "You attack the " << monster << " for " << playerDamage << " damage" << endl;
+                if (playerHealth > 0)
                 {
-                    monsterHealth -= playerDamage;
-                    cout << "You attack the " << monster << " for " << playerDamage << " damage" << endl;
-                    if (playerHealth > 0)
-                    {
-                        playerHealth -= monsterDamage;
-                        cout << monster << " attacks you for " << monsterDamage << " damage" << endl;
-                    }
-                    if (playerHealth <= 0)
-                    {
-                        deathSong();
-                        cout << "You are dead..." << endl;
-                        gameGoing = false; // End the game if the player dies
-                        break;
-                    }
-
-                    if (!gameGoing)
-                    {
-                        break; // incase if for some reason it doesnt already quit
-                    }
-
-                    cout << "Press enter to attack again" << endl;
-                    cin.ignore();
-                    cin.get();
-                    cout << "You have slayed " << monster << endl;
-                    monsterHealth -= playerDamage; // kills monster here
+                    playerHealth -= monsterDamage;
+                    cout << monster << " attacks you for " << monsterDamage << " damage" << endl;
+                    
                 }
+                if (playerHealth <= 0)
+                {
+                    deathSong();
+                    cout << "You are dead..." << endl;
+                    gameGoing = false; // End the game if the player dies
+                    break;
+                }
+
+                if (!gameGoing)
+                {
+                    break; // incase if for some reason it doesnt already quit
+                }
+
+                cout << "Press enter to attack again" << endl;
+                cin.ignore();
+                cin.get();
+                cout << "You have slayed " << monster << endl;
+                monsterHealth -= playerDamage; // kills monster here
                 cout << "You look around the room and spot a chest!" << endl;
                 cout << "Press enter to open the chest..." << endl;
                 chestLoot = lootGen();
