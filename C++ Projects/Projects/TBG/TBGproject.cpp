@@ -46,6 +46,9 @@ int main()
     int monsterHealth = 50;
     int monsterDamage = 10;
 
+    //data
+    int hasbeenRoom2 = 0;
+
     // inventory
     char inventoryChoice;
 
@@ -148,11 +151,14 @@ int main()
             break;
         case 1:
             monsterHealth += monsterHealth; // revive monster for next fight
-            cout << "Press enter to heal" << endl;
-            cin.ignore();
-            cin.get();
-            playerHealth += monsterDamage; // heals player from previous fight damage
-            cout << "You have been healed!" << endl;
+            while (hasbeenRoom2 != 1){
+                cout << "Press enter to heal" << endl;
+                cin.ignore();
+                cin.get();
+                playerHealth += monsterDamage; // heals player from previous fight damage
+                cout << "You have been healed!" << endl;
+                hasbeenRoom2++;
+        }
             cout << "You are in 'Room Two', do you wish to go (S)outh towards 'Room Three'? Or (W)est back to 'Room One'" << endl;
             cin >> destination;
             if (destination == 's' || destination == 'S')
