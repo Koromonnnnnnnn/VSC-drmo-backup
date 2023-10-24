@@ -45,6 +45,8 @@ int main()
     int playerDamage = 25;
     int monsterHealth = 50;
     int monsterDamage = 10;
+    int bossHealth = 200;
+    int bossDamage = 30;
 
     // data
     int hasbeenRoom1 = 0;
