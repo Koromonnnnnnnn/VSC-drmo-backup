@@ -47,7 +47,16 @@ int main()
     int monsterDamage = 10;
 
     // data
+    int hasbeenRoom1 = 0;
     int hasbeenRoom2 = 0;
+    int hasbeenRoom3 = 0;
+    int hasbeenRoom4 = 0;
+    int hasbeenRoom5 = 0;
+    int hasbeenRoom6 = 0;
+    int hasbeenRoom7 = 0;
+    int hasbeenRoom8 = 0;
+    int hasbeenRoom9 = 0;
+    int hasbeenRoom10 = 0;
 
     // inventory
     char inventoryChoice;
@@ -64,15 +73,38 @@ int main()
         switch (roomIn)
         {
         case 0:
-            monster = monsterGen();
-            cout << "You are currently in Room One" << endl;
-            cout << "A wild " << monster << " appears!" << endl;
-            monsterGen();
-            cout << "Press enter to attack" << endl;
-            cin.ignore();
-            cin.get();
-            while (monsterHealth > 0 && playerHealth > 0)
+            while (hasbeenRoom1 != 0)
             {
+                cout << "Continue? Y/N" << endl;
+                cin >> finalQuestion;
+                if (finalQuestion == 'y' || finalQuestion == 'Y')
+                {
+                    cout << "You are in 'Room One', do you wish to go (E)ast towards 'Room Two'?" << endl;
+                    cin.ignore();
+                    cin >> destination;
+                    if (destination == 'e' || destination == 'E')
+                        roomIn = 1; // 2
+                }
+                else if (finalQuestion == 'n' || finalQuestion == 'N')
+                {
+                    cout << "Terminal Destroyed..." << endl;
+                    gameGoing = false;
+                    break;
+                }
+                else
+                {
+                    cout << "Not a valid option..." << endl;
+                }
+            }
+            cout << "You are currently in Room One" << endl;
+            while (monsterHealth > 0 && playerHealth > 0 && hasbeenRoom1 != 1)
+            {
+                monster = monsterGen();
+                cout << "A wild " << monster << " appears!" << endl;
+                monsterGen();
+                cout << "Press enter to attack" << endl;
+                cin.ignore();
+                cin.get();
                 monsterHealth -= playerDamage;
                 cout << "You attack the " << monster << " for " << playerDamage << " damage" << endl;
                 if (playerHealth > 0)
@@ -125,7 +157,7 @@ int main()
                 {
                     break; // incase if for some reason it doesnt already quit
                 }
-
+                hasbeenRoom1++;
                 cout << "Continue? Y/N" << endl;
                 cin >> finalQuestion;
                 if (finalQuestion == 'y' || finalQuestion == 'Y')
