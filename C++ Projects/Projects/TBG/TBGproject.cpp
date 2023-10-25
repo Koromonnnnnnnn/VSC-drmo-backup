@@ -305,6 +305,8 @@ void initiatenormalFight()
         cout << "Press enter to attack again" << endl;
         cin.ignore();
         cin.get();
+        cout << ". . ." << endl;
+        victorySong();
         cout << "You have slayed " << monster << endl;
         monsterHealth -= playerDamage; // kills monster here
         hasbeenRoom1++;
