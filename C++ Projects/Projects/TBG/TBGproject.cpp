@@ -113,6 +113,7 @@ int main()
             }
             cout << "You are currently in Room One" << endl;
             initiatenormalFight();
+            chestFunction();
             cout << "Continue? Y/N" << endl;
             cin >> finalQuestion;
             if (finalQuestion == 'y' || finalQuestion == 'Y')
