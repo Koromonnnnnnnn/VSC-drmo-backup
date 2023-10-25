@@ -8,6 +8,11 @@ using namespace std;
 string monsterGen();
 string lootGen();
 
+// battle
+void initiatebossFight();
+void initiatenormalFight();
+void chestFunction();
+
 // songs
 void deathSong();
 void victorySong();
@@ -21,6 +26,36 @@ int itemCount = 0;
 string inventory[inventorySize]; // Create a list to store weapons
 void inventoryMenu();
 
+// data
+int hasbeenRoom1 = 0;
+int hasbeenRoom2 = 0;
+int hasbeenRoom3 = 0;
+int hasbeenRoom4 = 0;
+int hasbeenRoom5 = 0;
+int hasbeenRoom6 = 0;
+int hasbeenRoom7 = 0;
+int hasbeenRoom8 = 0;
+int hasbeenRoom9 = 0;
+int hasbeenRoom10 = 0;
+
+// health and damage
+int playerHealth = 100;
+int playerDamage = 25;
+int monsterHealth = 50;
+int monsterDamage = 10;
+int bossHealth = 50;
+int bossDamage = 10;
+
+// gameloop
+bool gameGoing = true;
+
+// inventory
+char inventoryChoice;
+
+// return
+string monster;
+string chestLoot;
+
 // other functions
 
 int main()
@@ -33,13 +68,6 @@ int main()
     char initialQuestion;
     char finalQuestion;
 
-    // return
-    string monster;
-    string chestLoot;
-
-    // gameloop
-    bool gameGoing = true;
-
     // battle
     int playerHealth = 100;
     int playerDamage = 25;
@@ -47,21 +75,6 @@ int main()
     int monsterDamage = 10;
     int bossHealth = 200;
     int bossDamage = 30;
-
-    // data
-    int hasbeenRoom1 = 0;
-    int hasbeenRoom2 = 0;
-    int hasbeenRoom3 = 0;
-    int hasbeenRoom4 = 0;
-    int hasbeenRoom5 = 0;
-    int hasbeenRoom6 = 0;
-    int hasbeenRoom7 = 0;
-    int hasbeenRoom8 = 0;
-    int hasbeenRoom9 = 0;
-    int hasbeenRoom10 = 0;
-
-    // inventory
-    char inventoryChoice;
 
     cout << "Welcome to \"The Forgotten Prophecy\"" << endl;
     cout << "You wake up somewhere unknown. Bright green grass and orange trees surround you." << endl;
@@ -78,8 +91,8 @@ int main()
             while (hasbeenRoom1 != 0)
             {
                 cout << "Continue? Y/N" << endl;
-                cin >> finalQuestion;
-                if (finalQuestion == 'y' || finalQuestion == 'Y')
+                cin >> initialQuestion;
+                if (initialQuestion == 'y' || initialQuestion == 'Y')
                 {
                     cout << "You are in 'Room One', do you wish to go (E)ast towards 'Room Two'?" << endl;
                     cin.ignore();
@@ -87,7 +100,7 @@ int main()
                     if (destination == 'e' || destination == 'E')
                         roomIn = 1; // 2
                 }
-                else if (finalQuestion == 'n' || finalQuestion == 'N')
+                else if (initialQuestion == 'n' || initialQuestion == 'N')
                 {
                     cout << "Terminal Destroyed..." << endl;
                     gameGoing = false;
@@ -99,87 +112,26 @@ int main()
                 }
             }
             cout << "You are currently in Room One" << endl;
-            while (monsterHealth > 0 && playerHealth > 0 && hasbeenRoom1 != 1)
+            initiatenormalFight();
+            cout << "Continue? Y/N" << endl;
+            cin >> finalQuestion;
+            if (finalQuestion == 'y' || finalQuestion == 'Y')
             {
-                monster = monsterGen();
-                cout << "A wild " << monster << " appears!" << endl;
-                monsterGen();
-                cout << "Press enter to attack" << endl;
+                cout << "You are in 'Room One', do you wish to go (E)ast towards 'Room Two'?" << endl;
                 cin.ignore();
-                cin.get();
-                monsterHealth -= playerDamage;
-                cout << "You attack the " << monster << " for " << playerDamage << " damage" << endl;
-                if (playerHealth > 0)
-                {
-                    playerHealth -= monsterDamage;
-                    cout << monster << " attacks you for " << monsterDamage << " damage" << endl;
-                }
-                if (playerHealth <= 0)
-                {
-                    deathSong();
-                    cout << "You are dead..." << endl;
-                    gameGoing = false; // End the game if the player dies
-                    break;
-                }
-
-                if (!gameGoing)
-                {
-                    break; // incase if for some reason it doesnt already quit
-                }
-
-                cout << "Press enter to attack again" << endl;
-                cin.ignore();
-                cin.get();
-                cout << "You have slayed " << monster << endl;
-                monsterHealth -= playerDamage; // kills monster here
-                cout << "You look around the room and spot a chest!" << endl;
-                cout << "Press enter to open the chest..." << endl;
-                chestLoot = lootGen();
-                cin.ignore();
-                cin.get();
-                cout << "You have found " << chestLoot << endl;
-                cout << "Would you like to add this item to your inventory? Y/N" << endl;
-                cin >> inventoryChoice;
-                if (inventoryChoice == 'y' || inventoryChoice == 'Y')
-                {
-                    inventoryMenu();
-                }
-                else if (inventoryChoice == 'n' || inventoryChoice == 'N')
-                {
-                    break;
-                }
-                else
-                {
-                    cout << "invalid option" << endl;
-                    gameGoing = false;
-                    break;
-                }
-
-                if (!gameGoing)
-                {
-                    break; // incase if for some reason it doesnt already quit
-                }
-                hasbeenRoom1++;
-                cout << "Continue? Y/N" << endl;
-                cin >> finalQuestion;
-                if (finalQuestion == 'y' || finalQuestion == 'Y')
-                {
-                    cout << "You are in 'Room One', do you wish to go (E)ast towards 'Room Two'?" << endl;
-                    cin.ignore();
-                    cin >> destination;
-                    if (destination == 'e' || destination == 'E')
-                        roomIn = 1; // 2
-                }
-                else if (finalQuestion == 'n' || finalQuestion == 'N')
-                {
-                    cout << "Terminal Destroyed..." << endl;
-                    gameGoing = false;
-                    break;
-                }
-                else
-                {
-                    cout << "Not a valid option..." << endl;
-                }
+                cin >> destination;
+                if (destination == 'e' || destination == 'E')
+                    roomIn = 1; // 2
+            }
+            else if (finalQuestion == 'n' || finalQuestion == 'N')
+            {
+                cout << "Terminal Destroyed..." << endl;
+                gameGoing = false;
+                break;
+            }
+            else
+            {
+                cout << "Not a valid option..." << endl;
             }
             break;
         case 1:
@@ -313,4 +265,81 @@ void attackSong()
 
 void welcomeSong()
 {
+}
+
+void initiatebossFight()
+{
+}
+
+void initiatenormalFight()
+{
+    while (monsterHealth > 0 && playerHealth > 0)
+    {
+        monster = monsterGen();
+        cout << "A wild " << monster << " appears!" << endl;
+        monsterGen();
+        cout << "Press enter to attack" << endl;
+        cin.ignore();
+        cin.get();
+        monsterHealth -= playerDamage;
+        cout << "You attack the " << monster << " for " << playerDamage << " damage" << endl;
+        if (playerHealth > 0)
+        {
+            playerHealth -= monsterDamage;
+            cout << monster << " attacks you for " << monsterDamage << " damage" << endl;
+        }
+        if (playerHealth <= 0)
+        {
+            deathSong();
+            cout << "You are dead..." << endl;
+            gameGoing = false; // End the game if the player dies
+            break;
+        }
+
+        if (!gameGoing)
+        {
+            break; // incase if for some reason it doesnt already quit
+        }
+
+        cout << "Press enter to attack again" << endl;
+        cin.ignore();
+        cin.get();
+        cout << "You have slayed " << monster << endl;
+        monsterHealth -= playerDamage; // kills monster here
+        hasbeenRoom1++;
+    }
+}
+
+void chestFunction()
+{
+    while (playerHealth > 0)
+    {
+        cout << "You look around the room and spot a chest!" << endl;
+        cout << "Press enter to open the chest..." << endl;
+        chestLoot = lootGen();
+        cin.ignore();
+        cin.get();
+        cout << "You have found " << chestLoot << endl;
+        cout << "Would you like to add this item to your inventory? Y/N" << endl;
+        cin >> inventoryChoice;
+        if (inventoryChoice == 'y' || inventoryChoice == 'Y')
+        {
+            inventoryMenu();
+        }
+        else if (inventoryChoice == 'n' || inventoryChoice == 'N')
+        {
+            break;
+        }
+        else
+        {
+            cout << "invalid option" << endl;
+            gameGoing = false;
+            break;
+        }
+
+        if (!gameGoing)
+        {
+            break; // incase if for some reason it doesnt already quit
+        }
+    }
 }
