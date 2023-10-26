@@ -11,6 +11,8 @@ string lootGen();
 // battle
 void initiatebossFight();
 void initiatenormalFight();
+
+//loot
 void chestFunction();
 
 // songs
