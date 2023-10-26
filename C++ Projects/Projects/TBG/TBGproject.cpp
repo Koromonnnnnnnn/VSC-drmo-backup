@@ -139,7 +139,7 @@ int main()
             break;
         case 1:
             monsterHealth += monsterHealth; // revive monster for next fight
-            while (hasbeenRoom2 != 1)
+            while (hasbeenRoom2 != 0)
             {
                 cout << "Press enter to heal" << endl;
                 cin.ignore();
