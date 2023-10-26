@@ -6,6 +6,10 @@ screen.fill((0, 0, 0))
 clock = pygame.time.Clock()  # set up clock
 gameover = False  # variable to run our game loop
 
+Link = pygame.image.load('link.png')  # load your spritesheet
+# this makes bright pink (255, 0, 255) transparent (sort of)
+Link.set_colorkey((255, 0, 255))
+
 # CONSTANTS
 LEFT = 0
 RIGHT = 1
@@ -23,6 +27,32 @@ keys = [False, False, False, False]
 # this variable stops gravity from pulling you down more when on a platform
 isOnGround = False
 
+# animation variables variables
+frameWidth = 64
+frameHeight = 96
+RowNum = 0  # for left animation, this will need to change for other animations
+frameNum = 0
+ticker = 0
+
+
+frameWidth = 64
+frameHeight = 96
+RowNum = 1  # for Right animation, this will need to change for other animations
+frameNum = 0
+ticker = 0
+
+frameWidth = 64
+frameHeight = 96
+RowNum = 2  # for Up animation, this will need to change for other animations
+frameNum = 0
+ticker = 0
+
+
+frameWidth = 64
+frameHeight = 96
+RowNum = 3  # for Down animation, this will need to change for other animations
+frameNum = 0
+ticker = 0
 
 while not gameover:  # GAME LOOP############################################################
     clock.tick(60)  # FPS
@@ -54,10 +84,20 @@ while not gameover:  # GAME LOOP################################################
     if keys[LEFT] == True:
         vx = -3
         direction = LEFT
+        RowNum = 0
      # RIGHT MOVEMENT
     elif keys[RIGHT] == True:
         vx = 3
         direction = RIGHT
+        RowNum = 1
+    elif keys[DOWN] == True:
+        vy = 3
+        direction = DOWN
+        RowNum = 2
+    elif keys[UP] == True:
+        vy = -6
+        direction = UP
+        RowNum = 3
 
     # turn off velocity
     else:
@@ -107,12 +147,66 @@ while not gameover:  # GAME LOOP################################################
     xpos += vx
     ypos += vy
 
-    # RENDER Section--------------------------------------------------------------------------------
+    # ANIMATION-------------------------------------------------------------------
+
+    # Update Animation Information
+    # Only animate when in motion
+    if vx < 0:  # left animation
+        # Ticker is a spedometer. We don't want Link animating as fast as the
+        # processor can process! Update Animation Frame each time ticker goes over
+        ticker += 1
+        if ticker % 10 == 0:  # only change frames every 10 ticks
+            frameNum += 1
+            # If we are over the number of frames in our sprite, reset to 0.
+            # In this particular case, there are 10 frames (0 through 9)
+        if frameNum > 7:
+            frameNum = 0
+
+    # Update Animation Information
+    # Only animate when in motion
+    if vx > 0:  # Right animation
+        # Ticker is a spedometer. We don't want Link animating as fast as the
+        # processor can process! Update Animation Frame each time ticker goes over
+        ticker += 1
+        if ticker % 10 == 0:  # only change frames every 10 ticks
+            frameNum += 1
+            # If we are over the number of frames in our sprite, reset to 0.
+            # In this particular case, there are 10 frames (0 through 9)
+        if frameNum > 7:
+            frameNum = 0
+
+       # Update Animation Information
+    # Only animate when in motion
+    if vy < 0:  # DOWN animation
+        # Ticker is a spedometer. We don't want Link animating as fast as the
+        # processor can process! Update Animation Frame each time ticker goes over
+        ticker += 1
+        if ticker % 10 == 0:  # only change frames every 10 ticks
+            frameNum += 1
+            # If we are over the number of frames in our sprite, reset to 0.
+            # In this particular case, there are 10 frames (0 through 9)
+        if frameNum > 7:
+            frameNum = 0
+
+    # Update Animation Information
+    # Only animate when in motion
+    if vy > 0:  # UP animation
+        # Ticker is a spedometer. We don't want Link animating as fast as the
+        # processor can process! Update Animation Frame each time ticker goes over
+        ticker += 1
+        if ticker % 10 == 0:  # only change frames every 10 ticks
+            frameNum += 1
+            # If we are over the number of frames in our sprite, reset to 0.
+            # In this particular case, there are 10 frames (0 through 9)
+        if frameNum > 7:
+            frameNum = 0
+
+    # RENDER--------------------------------------------------------------------------------
+    # Once we've figured out what frame we're on and where we are, time to render.
 
     screen.fill((0, 0, 0))  # wipe screen so it doesn't smear
-
-    pygame.draw.rect(screen, (100, 200, 100), (xpos, ypos, 20, 40))
-
+    screen.blit(Link, (xpos, ypos), (frameWidth*frameNum,
+                RowNum*frameHeight, frameWidth, frameHeight))
     # first platform
     pygame.draw.rect(screen, (200, 0, 100), (100, 750, 100, 20))
 
