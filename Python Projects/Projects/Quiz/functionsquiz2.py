@@ -1,4 +1,5 @@
 #1 ========
+
 def simpleCalculator(x, y, z):
     if z == "add":
         print(x + y)
