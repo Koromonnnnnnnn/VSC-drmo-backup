@@ -17,9 +17,6 @@ xPos = 200
 yPos = 200
 Vx = 1
 Vy = 1
-oldX = 200
-oldY = 200
-counter = 0
 
 # classes are like a template that you build and then use to stamp out lots of copies of a particular object.
 
@@ -60,6 +57,11 @@ class tailSeg:
     def draw(self):
         pygame.draw.circle(screen, (200, 0, 0), (self.xPos, self.yPos), 12)
 
+
+oldX = 200
+oldY = 200
+counter = 0
+
 # end class pellet
 
 # p1 = pellet(200, 50, 100, 20, 220, 10)
@@ -73,30 +75,12 @@ tail = list()
 for i in range(10):
     pelletBag.append(pellet(random.randrange(0, 400), random.randrange(0, 400), random.randrange(0, 255), random.randrange(
         0, 255), random.randrange(0, 255), 10))
-for i in range(10):
-    if pelletBag[i].collide(xPos, yPos) == True:
-        tail.append(tailSeg(oldX, oldY))
-
 
 # BEGIN GAME LOOP######################################################
 while not doExit:
 
     # pygame's way of listening for events (key presses, mouse clicks, etc)
     clock.tick(60)
-    counter+1
-    if counter == 20:  # create a delay so the segments follow behind
-        counter = 0  # reset counter onto old player position from 20 ticks ago
-        oldX = xPos
-        oldY = yPos
-
-        if (len(tail) > 2):  # dont push the numbers if there are no nodes yet
-            for i in range(len(tail)):  # loop for each slot in list
-                # start in Last position, push the second to last into it, repeat till at beginning
-                tail[len(tail)-i-1].xPos = tail[len(tail)-i-2].xPos
-                tail[len(tail)-i-1].yPos = tail[len(tail)-i-2].yPos
-            if (len(tail) > 0):  # if you have atleast one sgement, push old head position into that
-                # push head position into first position of list
-                tail[0].update(oldX, oldY)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -116,16 +100,33 @@ while not doExit:
         else:
             Vy = -1
 
+    counter = +1
+    if counter == 20:  # create a delay so the segments follow behind
+        counter = 0  # reset counter onto old player position from 20 ticks ago
+        oldX = xPos
+        oldY = yPos
+
+        if (len(tail) > 2):  # dont push the numbers if there are no nodes yet
+            for i in range(len(tail)):  # loop for each slot in list
+                # start in Last position, push the second to last into it, repeat till at beginning
+                tail[len(tail)-i-1].xPos = tail[len(tail)-i-2].xPos
+                tail[len(tail)-i-1].yPos = tail[len(tail)-i-2].yPos
+            if (len(tail) > 0):  # if you have atleast one sgement, push old head position into that
+                # push head position into first position of list
+                tail[0].update(oldX, oldY)
+
     # Physics
     xPos += Vx
     yPos += Vy
+
     # render section-----------------------------------
 
     screen.fill((255, 255, 255))
     pygame.draw.circle(screen, (200, 0, 200), (xPos, yPos), 12)
 
     for i in range(10):
-        pelletBag[i].collide(xPos, yPos)
+        if pelletBag[i].collide(xPos, yPos) == True:
+            tail.append(tailSeg(oldX, oldY))
     for i in range(10):
         pelletBag[i].draw()
     for i in range(len(tail)):
