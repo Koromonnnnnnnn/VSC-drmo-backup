@@ -81,42 +81,40 @@ for i in range(10):
 # BEGIN GAME LOOP######################################################
 while not doExit:
 
-    # pygame's way of listening for events (key presses, mouse clicks, etc)
-    clock.tick(60)
-    counter+1
-    if counter == 20:  # create a delay so the segments follow behind
-        counter = 0  # reset counter onto old player position from 20 ticks ago
-        oldX = xPos
-        oldY = yPos
-
-        if (len(tail) > 2):  # dont push the numbers if there are no nodes yet
-            for i in range(len(tail)):  # loop for each slot in list
-                # start in Last position, push the second to last into it, repeat till at beginning
-                tail[len(tail)-i-1].xPos = tail[len(tail)-i-2].xPos
-                tail[len(tail)-i-1].yPos = tail[len(tail)-i-2].yPos
-            if (len(tail) > 0):  # if you have atleast one sgement, push old head position into that
-                # push head position into first position of list
-                tail[0].update(oldX, oldY)
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             doExit = True  # lets you quit program
 
-    # keyboard input-----------------------------------
+    # Counter should be inside the game loop
+    counter += 1
 
-    if event.type == pygame.MOUSEMOTION:
-        mousePos = event.pos
+    # Reset counter if it reaches 20
+    if counter == 20:
+        counter = 0
+        oldX = xPos
+        oldY = yPos
 
-        if mousePos[0] > xPos:
-            Vx = 1
-        else:
-            Vx = -1
-        if mousePos[1] > yPos:
-            Vy = 1
-        else:
-            Vy = -1
+        if len(tail) > 2:
+            for i in range(len(tail)):
+                tail[len(tail) - i - 1].xPos = tail[len(tail) - i - 2].xPos
+                tail[len(tail) - i - 1].yPos = tail[len(tail) - i - 2].yPos
+            if len(tail) > 0:
+                tail[0].update(oldX, oldY)
 
-    # Physics
+    # Event handling for mouse motion
+    for event in pygame.event.get():
+        if event.type == pygame.MOUSEMOTION:
+            mousePos = event.pos
+
+            if mousePos[0] > xPos:
+                Vx = 1
+            else:
+                Vx = -1
+            if mousePos[1] > yPos:
+                Vy = 1
+            else:
+                Vy = -1
+
     xPos += Vx
     yPos += Vy
     # render section-----------------------------------
