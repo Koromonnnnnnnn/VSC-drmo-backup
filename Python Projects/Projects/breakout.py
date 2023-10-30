@@ -10,6 +10,9 @@ clock = pygame.time.Clock()
 
 doExit = False
 
+p1x = 20
+p1y = 200
+
 class brick:
     def __init__(self, xpos, ypos):
         self.xpos = xpos
@@ -30,8 +33,19 @@ while not doExit:
             doExit = True
             
     # keyboard input-----------------------------------
+    
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_d]:
+        p1x += 5
+    if keys[pygame.K_a]:
+        p1x -= 5
+
 
     # render section-----------------------------------
+    
+    screen.fill((0, 0, 0))
+    
+    pygame.draw.rect(screen, (255, 255, 255), (p1x, p1y, 20, 100), 20)
     
     b1.draw()
     
