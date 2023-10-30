@@ -35,7 +35,7 @@ class pellet:
                                     self.blue), (self.xPos, self.yPos), self.radius)
 
     def collide(self, x, y):
-        if math.sqrt((x-self.xPos)*(x-self.xPos)+(y-self.yPos) * (y-self.yPos)) < self.radius + 6:
+        if math.sqrt((x-self.xPos)*(x-self.xPos)+(y-self.yPos)*(y-self.yPos)) < self.radius + 6:
             self.xPos = random.randrange(0, 400)
             self.yPos = random.randrange(0, 400)
             self.red = random.randrange(0, 255)
@@ -100,7 +100,7 @@ while not doExit:
         else:
             Vy = -1
 
-    counter = +1
+    counter += 1
     if counter == 20:  # create a delay so the segments follow behind
         counter = 0  # reset counter onto old player position from 20 ticks ago
         oldX = xPos
