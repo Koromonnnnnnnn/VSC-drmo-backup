@@ -1,18 +1,36 @@
-#include<iostream> //library
-using namespace std; //makes iostream work better
+#include <iostream>  //library
+using namespace std; // makes iostream work better
 
-int main() { //beginning of main
+string inventory[10];
+bool gameGoing = true;
 
+int main()
+{ // beginning of main
+    for (int i = 0; i < 10; i++)
+        inventory[i] = " ";
+    
     int room = 1;
     char direction;
 
-    while(1) {
-        switch(room) { //beginning of switch
+    while (gameGoing)
+    {
+        cout << "your inventory:" << endl;
+        for (int i = 0; i < 10; i++)
+            cout << inventory[i] << " ";
+        cout << endl;
+
+        switch (room)
+        { // beginning of switch
         case 1:
             cout << "you're in room 1, you can go (E)ast" << endl;
-            cin >> direction; //check and store user input
-            if (direction == 'E') //check if they want to go east
-            room = 2; //if input = E then they go to room 2
+            if (inventory[0] != "Key")
+            cout << "You see a (K)ey on the floor." << endl;
+            cin >> direction; // check and store user input
+            if (direction == 'E')
+                room = 2;
+            if (direction == 'K')
+                inventory[0] = "Key";
+            // check if they want to go east //if input = E then they go to room 2
             break;
         case 2:
             cout << "you're in room 2, you can go (W)est or (S)outh" << endl;
@@ -20,7 +38,13 @@ int main() { //beginning of main
             if (direction == 'W')
                 room = 1;
             if (direction == 'S')
-                room = 3;
+                if (inventory[0] == "Key"){
+                    cout << "you unlock the door with the key!" << endl;
+                    inventory[0] = " ";
+                    room = 3;
+                }
+            else
+                cout << "the door is locked" << endl;
             break;
         case 3:
             cout << "you're in room 3, you can go (N)orth or (S)outh" << endl;
@@ -44,6 +68,6 @@ int main() { //beginning of main
             if (direction == 'W')
                 room = 4;
             break;
-        } //end of switch
-      } //while loop
-    } //end of main
+        } // end of switch
+    }     // while loop
+} // end of main
