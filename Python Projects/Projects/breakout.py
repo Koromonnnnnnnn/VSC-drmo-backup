@@ -23,23 +23,27 @@ clock = pygame.time.Clock()
 paddle_x = (WIDTH - PADDLE_WIDTH) // 2
 paddle_y = HEIGHT - PADDLE_HEIGHT - 10
 
+
 class Brick:
     def __init__(self, xpos, ypos):
         self.xpos = xpos
         self.ypos = ypos
-        self.color = (random.randrange(100, 250), random.randrange(100, 250), random.randrange(100, 250))
+        self.color = (random.randrange(100, 250), random.randrange(
+            100, 250), random.randrange(100, 250))
         self.isDead = False
 
     def draw(self):
-        pygame.draw.rect(screen, self.color, (self.xpos, self.ypos, BRICK_WIDTH, BRICK_HEIGHT))
+        pygame.draw.rect(screen, self.color, (self.xpos,
+                         self.ypos, BRICK_WIDTH, BRICK_HEIGHT))
 
     def check_collision(self, ball_x, ball_y):
         if (ball_x + BALL_RADIUS > self.xpos and
             ball_x - BALL_RADIUS < self.xpos + BRICK_WIDTH and
             ball_y + BALL_RADIUS > self.ypos and
-            ball_y - BALL_RADIUS < self.ypos + BRICK_HEIGHT):
+                ball_y - BALL_RADIUS < self.ypos + BRICK_HEIGHT):
             return True
         return False
+
 
 bricks = []
 for row in range(BRICK_ROWS):
@@ -80,7 +84,7 @@ while not game_over:
 
         if lives == 0:
             game_over = True
-    
+
     if ball_x + BALL_RADIUS > WIDTH:
         # Ball out of bounds, reset it
         ball_x = WIDTH // 2
@@ -93,19 +97,19 @@ while not game_over:
     ball_y += ball_dy
 
     # Broken Paddle interaction - Only registered half of the paddle
-    #if ball_x + BALL_RADIUS > paddle_x and ball_x - BALL_RADIUS < paddle_x + PADDLE_WIDTH and ball_y + BALL_RADIUS > paddle_y:
-        #if ball_x > paddle_x + PADDLE_WIDTH / 2:
-            #angle = (ball_x - (paddle_x + PADDLE_WIDTH / 2)) / (PADDLE_WIDTH / 2)
-            #ball_dx = 5 * angle
-            #ball_dy = -ball_dy
-        
-    #Fixed Paddle 
+    # if ball_x + BALL_RADIUS > paddle_x and ball_x - BALL_RADIUS < paddle_x + PADDLE_WIDTH and ball_y + BALL_RADIUS > paddle_y:
+    # if ball_x > paddle_x + PADDLE_WIDTH / 2:
+    # angle = (ball_x - (paddle_x + PADDLE_WIDTH / 2)) / (PADDLE_WIDTH / 2)
+    # ball_dx = 5 * angle
+    # ball_dy = -ball_dy
+
+    # Fixed Paddle
     if (ball_x + BALL_RADIUS > paddle_x and
         ball_x - BALL_RADIUS < paddle_x + PADDLE_WIDTH and
         ball_y + BALL_RADIUS > paddle_y and
-        ball_y - BALL_RADIUS < paddle_y + PADDLE_HEIGHT):
-        ball_dy = -ball_dy # Bounce off the paddle
-        
+            ball_y - BALL_RADIUS < paddle_y + PADDLE_HEIGHT):
+        ball_dy = -ball_dy  # Bounce off the paddle
+
     # Brick interaction
     for brick in bricks:
         if not brick.isDead and brick.check_collision(ball_x, ball_y):
@@ -115,8 +119,9 @@ while not game_over:
     # Render section
     screen.fill(BLACK)
 
-    pygame.draw.rect(screen, WHITE, (paddle_x, paddle_y, PADDLE_WIDTH, PADDLE_HEIGHT))
-    
+    pygame.draw.rect(screen, WHITE, (paddle_x, paddle_y,
+                     PADDLE_WIDTH, PADDLE_HEIGHT))
+
     for brick in bricks:
         if not brick.isDead:
             brick.draw()
@@ -124,15 +129,5 @@ while not game_over:
     pygame.draw.circle(screen, WHITE, (ball_x, ball_y), BALL_RADIUS)
 
     pygame.display.flip()
-
-# Game over display
-screen.fill(BLACK)
-font = pygame.font.Font(None, 36)
-text = font.render("Game Over", True, WHITE)
-text_rect = text.get_rect(center=(WIDTH // 2, HEIGHT // 2))
-screen.blit(text, text_rect)
-pygame.display.flip()
-
-pygame.time.delay(2000) # Display "Game Over" for 2 seconds
 
 pygame.quit()
