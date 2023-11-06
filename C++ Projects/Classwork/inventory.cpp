@@ -2,6 +2,9 @@
 using namespace std; // makes iostream work better
 
 string inventory[10];
+int gold = 100;
+void shop();
+
 bool gameGoing = true;
 
 int main()
@@ -71,3 +74,35 @@ int main()
         } // end of switch
     }     // while loop
 } // end of main
+
+void shop(){
+    int input;
+    cout << "welcome to the shop" << endl;
+    cout << "items for sale:" << endl;
+    cout << "1) cupcake" << endl;
+    cout << "2) sock" << endl;
+    cout << "3) key" << endl;
+    cout << "your inventory:" << endl;
+    for (int i = 0; i < 10; i++)
+        cout << inventory[i] << " ";
+    cout << endl;
+    cout << "what would you like to purchase?" << endl;
+    cin >> input;
+    if (input == 1) {
+        cout << "you bought the cupcake!" << endl;
+        inventory[1] = "cupcake";
+    }
+    else if (input == 2) {
+        cout << "you bought the sock!" << endl;
+        inventory[2] = "sock";
+    }
+    else if (input == 3) {
+        cout << "you bought the key!" << endl;
+        inventory[0] = "key";
+    }
+    else {
+        cout << "not an option, dummy" << endl;
+    
+    }
+    
+}
