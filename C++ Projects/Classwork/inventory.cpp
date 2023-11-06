@@ -11,7 +11,7 @@ int main()
 { // beginning of main
     for (int i = 0; i < 10; i++)
         inventory[i] = " ";
-    
+
     int room = 1;
     char direction;
 
@@ -27,7 +27,7 @@ int main()
         case 1:
             cout << "you're in room 1, you can go (E)ast" << endl;
             if (inventory[0] != "Key")
-            cout << "You see a (K)ey on the floor." << endl;
+                cout << "You see a (K)ey on the floor." << endl;
             cin >> direction; // check and store user input
             if (direction == 'E')
                 room = 2;
@@ -41,13 +41,14 @@ int main()
             if (direction == 'W')
                 room = 1;
             if (direction == 'S')
-                if (inventory[0] == "Key"){
+                if (inventory[0] == "Key")
+                {
                     cout << "you unlock the door with the key!" << endl;
                     inventory[0] = " ";
                     room = 3;
                 }
-            else
-                cout << "the door is locked" << endl;
+                else
+                    cout << "the door is locked" << endl;
             break;
         case 3:
             cout << "you're in room 3, you can go (N)orth or (S)outh" << endl;
@@ -75,7 +76,8 @@ int main()
     }     // while loop
 } // end of main
 
-void shop(){
+void shop()
+{
     int input;
     cout << "welcome to the shop" << endl;
     cout << "items for sale:" << endl;
@@ -88,21 +90,23 @@ void shop(){
     cout << endl;
     cout << "what would you like to purchase?" << endl;
     cin >> input;
-    if (input == 1) {
+    if (input == 1)
+    {
         cout << "you bought the cupcake!" << endl;
         inventory[1] = "cupcake";
     }
-    else if (input == 2) {
+    else if (input == 2)
+    {
         cout << "you bought the sock!" << endl;
         inventory[2] = "sock";
     }
-    else if (input == 3) {
+    else if (input == 3)
+    {
         cout << "you bought the key!" << endl;
         inventory[0] = "key";
     }
-    else {
+    else
+    {
         cout << "not an option, dummy" << endl;
-    
     }
-    
 }
