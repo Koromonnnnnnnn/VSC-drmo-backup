@@ -52,11 +52,14 @@ int main()
             break;
         case 3:
             cout << "you're in room 3, you can go (N)orth or (S)outh" << endl;
+            cout << "Theres a (s)hop in the corner" << endl;
             cin >> direction;
             if (direction == 'N')
                 room = 2;
             if (direction == 'S')
                 room = 4;
+            if (direction == 's')
+                shop();
             break;
         case 4:
             cout << "you're in room 4, you can go (E)ast or (N)orth" << endl;
@@ -79,48 +82,54 @@ int main()
 void shop()
 {
     int input;
-    cout << "welcome to the shop" << endl;
-    cout << "items for sale:" << endl;
-    cout << "1) cupcake: $5" << endl;
-    cout << "2) sock: $10" << endl;
-    cout << "3) key: $50" << endl;
-    cout << "your inventory:" << endl;
-    for (int i = 0; i < 10; i++)
-        cout << inventory[i] << " ";
-    cout << endl;
-    cout << "what would you like to purchase?" << endl;
-    cin >> input;
-    if (input == 1)
+    while (input != '0')
     {
-        if (gold >= 5)
+        cout << "welcome to the shop" << endl;
+        cout << "items for sale:" << endl;
+        cout << "1) cupcake: $5" << endl;
+        cout << "2) sock: $10" << endl;
+        cout << "3) key: $50" << endl;
+        cout << "your inventory:" << endl;
+        cout << "0 to quit" << endl;
+        cout << "your gold: " << gold << endl;
+        for (int i = 0; i < 10; i++)
+            cout << inventory[i] << " ";
+        cout << endl;
+        cout << "what would you like to purchase?" << endl;
+        cin >> input;
+        if (input == 1)
         {
-            cout << "you bought the cupcake!" << endl;
-            inventory[1] = "cupcake";
-            gold -= 5;
+            if (gold >= 5)
+            {
+                cout << "you bought the cupcake!" << endl;
+                inventory[1] = "cupcake";
+                gold -= 5;
+            }
+            else
+                cout << "you dont have enough gold!" << endl;
+        }
+        else if (input == 2)
+        {
+            if (gold >= 10)
+            {
+                cout << "you bought the sock!" << endl;
+                inventory[2] = "sock";
+                gold -= 10;
+            }
+        }
+        else if (input == 3)
+        {
+            if (gold > -50)
+            {
+                cout << "you bought the key!" << endl;
+                inventory[0] = "key";
+                gold -= 50;
+            }
         }
         else
-            cout << "you dont have enough gold!" << endl;
-    }
-    else if (input == 2)
-    {
-        if (gold >= 10)
         {
-            cout << "you bought the sock!" << endl;
-            inventory[2] = "sock";
-            gold -= 10;
+            cout << "not an option, dummy" << endl;
         }
-    }
-    else if (input == 3)
-    {
-        if (gold > -50)
-        {
-            cout << "you bought the key!" << endl;
-            inventory[0] = "key";
-            gold -= 50;
-        }
-    }
-    else
-    {
-        cout << "not an option, dummy" << endl;
+        break;
     }
 }
