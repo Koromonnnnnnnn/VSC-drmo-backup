@@ -81,9 +81,9 @@ void shop()
     int input;
     cout << "welcome to the shop" << endl;
     cout << "items for sale:" << endl;
-    cout << "1) cupcake" << endl;
-    cout << "2) sock" << endl;
-    cout << "3) key" << endl;
+    cout << "1) cupcake: $5" << endl;
+    cout << "2) sock: $10" << endl;
+    cout << "3) key: $50" << endl;
     cout << "your inventory:" << endl;
     for (int i = 0; i < 10; i++)
         cout << inventory[i] << " ";
@@ -92,18 +92,32 @@ void shop()
     cin >> input;
     if (input == 1)
     {
-        cout << "you bought the cupcake!" << endl;
-        inventory[1] = "cupcake";
+        if (gold >= 5)
+        {
+            cout << "you bought the cupcake!" << endl;
+            inventory[1] = "cupcake";
+            gold -= 5;
+        }
+        else
+            cout << "you dont have enough gold!" << endl;
     }
     else if (input == 2)
     {
-        cout << "you bought the sock!" << endl;
-        inventory[2] = "sock";
+        if (gold >= 10)
+        {
+            cout << "you bought the sock!" << endl;
+            inventory[2] = "sock";
+            gold -= 10;
+        }
     }
     else if (input == 3)
     {
-        cout << "you bought the key!" << endl;
-        inventory[0] = "key";
+        if (gold > -50)
+        {
+            cout << "you bought the key!" << endl;
+            inventory[0] = "key";
+            gold -= 50;
+        }
     }
     else
     {
