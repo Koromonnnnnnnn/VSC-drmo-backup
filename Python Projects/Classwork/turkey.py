@@ -20,8 +20,8 @@ while not doExit:
     # render section-----------------------------------
 
     screen.fill((0, 0, 0))
-
-    pygame.draw.ellipse(screen, (110, 70, 0), (WIDTH // 2, LENGTH // 2, 200, 200))
+    
+    pygame.draw.ellipse(screen, (110, 70, 0), (WIDTH // 2, HEIGHT // 2, 200, 200))
     pygame.display.flip()
 
 pygame.quit()
