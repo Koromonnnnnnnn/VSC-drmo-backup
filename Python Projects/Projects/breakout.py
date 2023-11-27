@@ -4,7 +4,7 @@ import random
 pygame.init()
 
 # Constants
-WIDTH, HEIGHT = 800, 600
+WIDTH, HEIGHT = 700, 500
 PADDLE_WIDTH, PADDLE_HEIGHT = 120, 20
 BALL_RADIUS = 10
 BRICK_WIDTH, BRICK_HEIGHT = 80, 30
@@ -104,6 +104,12 @@ while not game_over:
     # ball_dy = -ball_dy
 
     # Fixed Paddle
+    
+    if ball_y <= 0 or ball_y + 20 >= 500:
+        ball_dy *= -1
+    if ball_x <= 0 or ball_x >= 680:
+        ball_dx *= -1
+
     if (ball_x + BALL_RADIUS > paddle_x and
         ball_x - BALL_RADIUS < paddle_x + PADDLE_WIDTH and
         ball_y + BALL_RADIUS > paddle_y and
