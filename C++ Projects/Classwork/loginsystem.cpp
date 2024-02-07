@@ -15,7 +15,7 @@ int main ()
         cout << "Please enter your user password: ";
         cin >> userPassword;
 
-        if (userName == "Jaime" && userPassword == "Cuara")
+        if (userName == "j" && userPassword == "c")
         {
             cout << "Welcome Jaime!\n";
             break;
